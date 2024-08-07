@@ -15,7 +15,6 @@ public class OrderByIdStep {
     }
 
     public void consultarById(int id) {
-        // Realiza la solicitud y almacena la respuesta
         response = given()
                 .contentType("application/json")
                 .log().all()
@@ -23,12 +22,8 @@ public class OrderByIdStep {
     }
 
     public void imprimirOrderById() {
-        // Verifica si hay una respuesta antes de intentar acceder a ella
-        if (response != null) {
-            // Obtener el objeto Order directamente
+        if (response != null) {// para validar la respuesta en objeto
             Order order = response.jsonPath().getObject("", Order.class);
-
-            // Imprimir la información del objeto Order
             System.out.println("ID: " + order.getId());
             System.out.println("Pet ID: " + order.getPetId());
             System.out.println("Quantity: " + order.getQuantity());
